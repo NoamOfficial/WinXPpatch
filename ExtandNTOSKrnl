@@ -1,0 +1,23 @@
+undef WinGetMemorySpace
+Undef SecurEiSCSIConnection
+NAME ntoskrnl.exe
+#if defined(_Intel64_)
+Intel64GetProcessorInfo
+Intel64SetMultiCPU
+Intel64CreateQuerySysPoint
+Intel64InitializeProcessor CONSTANT
+#if Defined(_Intel64AsNative_)
+Undef Intel64BugCrash
+SystemShutdownTimeoutAfterCrash = 30000
+KeReserveMemory = KeReserveMemorySpace
+// Add Your Intel64 As Native mode Functions
+#if defined(_AMD64_)
+AMD64GetProcessorInfo
+AMD64SetRuntimeVar
+SetProcessorAmount = // your processor Amount
+SATA_AHCI_Id = // SATA AHCI Hardware Id. will be deleted after installation
+HotSwapEnabled = ExGetCrashExpectionIfElse
+#if defined(_X86_)
+X86GetFileSystemStatus
+X86KeDeleteTempFs
+KeBootHookEx
