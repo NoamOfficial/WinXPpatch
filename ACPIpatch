@@ -1,0 +1,35 @@
+ACPI.sys Patch Source code:
+Undef WinConfigureACPITable
+undef Intel64ConfigureCPU
+Undef AMD64ConfigureCPU
+NAME ACPI.sys
+EXPORTS
+WinACPILoadDevice
+WinACPIGetHardDriveInfo
+winACPISetDevice
+#if Defined(_unknownHardware_)
+Info: Add Your Functions Here for Unknown hardware devices.
+#if defined(_AMD64_)
+ACPIGetProcessorState
+ACPIUseIntel64AsMicroCPU // For Servers With more then one cpu
+ACPIStartACPICall
+ACPIDetectNewHardware
+ACPIDisableHardDrive // also for servers
+ACPIQueryHardwareInfo
+ACPIInitializeCPURegisters CONSTANT
+#if Defined(_X86_) // note: Might Not Work properly On SP2 And 3
+ACPIInitializeDevice
+undef X86SetMenualMode
+ACPIHotSwapCPU
+ACPIPointFPUEndPoint
+ACPIIsCPUSSECompatible
+ACPIIsCPUSSE2Compatible
+// here you can type your x86/x86-x64 Ids
+#If defined(_Intel64_)
+Undef Intel64CPUName = // Type your cpu's Name
+WinIntel64GetIsIdle
+WinUseIntel64XAMD64AsOne // for multi-processor systems
+
+
+
+
