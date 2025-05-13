@@ -1,0 +1,18 @@
+Disclaimer: this code is Not A copy of Windows and Is Purely Made By Me
+undef LsassSuspendUserLogin
+undef IsUserLoggedIn = yes
+NAME Lsass.exe
+LsassCreateUserAuthHook
+LsassSaveSignInInformation
+LsassLogOffUser
+LsassInitializeUserEntry
+LsassVerifyUser
+LsassCreateUserInformation
+#if defined(_LogOffsignaled_)
+LoginEncryptSAM
+LsassUnloadUserdata
+LsassSignalThemeDeinitialization
+#define IsTrustedInstallerExited = KeSignalTrustedInstallerExitEx
+#if Defined(_LogOnSignaled_)
+WinLogonLoadUserdata
+
